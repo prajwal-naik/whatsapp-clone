@@ -14,6 +14,8 @@
     "better-react-spinkit": "^2.0.4",
     "email-validator": "^2.0.4",
     "firebase": "^8.6.8",
+    "firebase-admin": "^9.9.0",
+    "fs": "0.0.1-security",
     "next": "11.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
