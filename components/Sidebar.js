@@ -57,8 +57,10 @@ function Sidebar() {
 			</Header>
 
 			<Search>
-				<SearchIcon />
-				<SearchInput placeholder = "Search in chats"/>
+				<IconPlusInput>
+					<SearchIcon />
+					<SearchInput placeholder = "Search"/>
+				</IconPlusInput>
 			</Search>
 
 			<SidebarButton onClick = {createChat} >Start a new chat</SidebarButton>
@@ -82,21 +84,31 @@ function Sidebar() {
 
 export default Sidebar;
 
-const Container = styled.div``;
+const Container = styled.div`
+`;
+
+const IconPlusInput = styled.div`
+	display: flex;
+	background-color: white;
+	border-radius: 40px;
+	flex: 1;
+	padding: 10px;
+`;
 
 const Search = styled.div`
 	display: flex;
 	align-items: center;
 	padding: 20px;
 	border-radius: 2px;
-
+	background-color: #f6f6f6;
+	border-bottom: 1px solid #dfdfdf;
 `;
 
 const SidebarButton = styled(Button)`
 	width: 100%;
 	&&& {
 		border-top: 1px solid whitesmoke;
-		border-bottom: 1px solid whitesmoke;
+		border-bottom: 1px solid #dfdfdf;
 	}
 	
 `;
@@ -104,20 +116,23 @@ const SidebarButton = styled(Button)`
 const SearchInput = styled.input`
 	outline-width: 0;
 	border: none;
-	flex: 1;
+	padding-left: 10px;
+	/* flex: 1; */
+	/* border-radius: 40px; */
 `;
 
 const Header = styled.div`
 	display: flex;
 	position: sticky;
 	top: 0;
-	background-color: white;
+	background-color: #ededed;
 	z-index: 1;
 	justify-content: space-between;
 	align-items: center;
 	padding: 15px;
 	height: 80px;
 	border-bottom: 1px solid whitesmoke;
+	border-right : 1px solid #dfdfdf;
 `;
 
 const UserAvatar = styled(Avatar)`

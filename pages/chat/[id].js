@@ -9,7 +9,7 @@ import getRecipientEmail from "../../utils/getRecipientEmail";
 function Chat({ chat, messages }) {
 
     const [user] = useAuthState(auth);
-
+    
 
     return (
         <Container>
@@ -18,7 +18,7 @@ function Chat({ chat, messages }) {
             </Head>
             <Sidebar />
             <ChatContainer>
-                <ChatScreen />
+                <ChatScreen chat = {chat} messages = {messages}/>
             </ChatContainer>
         </Container>
     );
@@ -49,7 +49,7 @@ export async function getServerSideProps(context) {
         ...chatRes.data()
     }
 
-    console.log(chat, messages);
+    // console.log(chat, messages);
 
     return {
         props: {
@@ -72,5 +72,5 @@ const ChatContainer = styled.div`
         display: none;
     }
     -ms-overflow-style: none;
-    scrollbar-width: none;
+    scrollbar-width: 0px;
 `;
