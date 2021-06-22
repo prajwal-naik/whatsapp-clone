@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { Avatar, IconButton, Button } from "@material-ui/core";
 import ChatIcon from "@material-ui/icons/chat";
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import AddIcon from '@material-ui/icons/Add';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import AddCommentIcon from '@material-ui/icons/AddComment';
 import SearchIcon from '@material-ui/icons/Search';
 import * as EmailValidator from "email-validator";
 import { auth, db } from "../firebase";
@@ -37,33 +39,33 @@ function Sidebar() {
 
     return (
         <Container>
-			<Header>
-				<UserAvatar 
-					onClick = { () => auth.signOut() }
-					src = {user.photoURL}
-				/>
-				
-				<IconsContainer>
-
-					<IconButton>
-						<ChatIcon/>
-					</IconButton>
-
-					<IconButton>
-						<MoreVertIcon/>
-					</IconButton>
+			<HeaderSearchStart>
+				<Header>
+					<UserAvatar 
+						onClick = { () => auth.signOut() }
+						src = {user.photoURL}
+					/>
 					
-				</IconsContainer>
-			</Header>
+					<IconsContainer>
 
-			<Search>
-				<IconPlusInput>
-					<SearchIcon />
-					<SearchInput placeholder = "Search"/>
-				</IconPlusInput>
-			</Search>
+						<IconButton>
+							<AddIcon onClick = {createChat} color = "#00bfa5"/>
+						</IconButton>
 
-			<SidebarButton onClick = {createChat} >Start a new chat</SidebarButton>
+						<IconButton>
+							<MoreHorizIcon/>
+						</IconButton>
+						
+					</IconsContainer>
+				</Header>
+
+				<Search>
+					<IconPlusInput>
+						<SearchIcon />
+						<SearchInput placeholder = "Search"/>
+					</IconPlusInput>
+				</Search>
+			</HeaderSearchStart>
 
 			{/* list of chats */}
 			{chatsSnapshot?.docs.map((chat) =>{
@@ -85,6 +87,22 @@ function Sidebar() {
 export default Sidebar;
 
 const Container = styled.div`
+	overflow: scroll;
+    height: 100vh;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: 0px;
+`;
+
+const HeaderSearchStart = styled.div`
+	display: flex;
+	flex-direction: column;
+	position: sticky;
+	z-index: 1;
+	top : 0;
+	background-color: #00bfa5;
 `;
 
 const IconPlusInput = styled.div`
@@ -92,13 +110,13 @@ const IconPlusInput = styled.div`
 	background-color: white;
 	border-radius: 40px;
 	flex: 1;
-	padding: 10px;
+	padding: 5px;
 `;
 
 const Search = styled.div`
 	display: flex;
 	align-items: center;
-	padding: 20px;
+	padding: 10px;
 	border-radius: 2px;
 	background-color: #f6f6f6;
 	border-bottom: 1px solid #dfdfdf;
@@ -106,6 +124,7 @@ const Search = styled.div`
 
 const SidebarButton = styled(Button)`
 	width: 100%;
+	background-color: #00bfa5;
 	&&& {
 		border-top: 1px solid whitesmoke;
 		border-bottom: 1px solid #dfdfdf;
@@ -123,7 +142,7 @@ const SearchInput = styled.input`
 
 const Header = styled.div`
 	display: flex;
-	position: sticky;
+	/* position: sticky; */
 	top: 0;
 	background-color: #ededed;
 	z-index: 1;
