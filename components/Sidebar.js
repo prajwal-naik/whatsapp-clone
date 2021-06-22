@@ -48,8 +48,8 @@ function Sidebar() {
 					
 					<IconsContainer>
 
-						<IconButton>
-							<AddIcon onClick = {createChat} color = "#00bfa5"/>
+						<IconButton onClick = {createChat}>
+							<AddIcon color = "#00bfa5"/>
 						</IconButton>
 
 						<IconButton>
