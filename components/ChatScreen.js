@@ -118,7 +118,7 @@ const HeaderInformation = styled.div`
         margin-bottom: 3px;
     }
 
-    p {
+    >p {
         font-size: 14px;
         color: gray;
         /* margin-top: 0px; */
